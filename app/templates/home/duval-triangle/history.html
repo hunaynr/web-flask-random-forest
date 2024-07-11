@@ -1,0 +1,88 @@
+{% extends "layout/dashboard.base.html" %} {% block subheading %}
+<h6 class="text-base text-neutral-900">Duval Triangle</h6>
+{% endblock %} {% block main %}
+<main class="w-full flex flex-row">
+  <div class="bg-neutral-50 px-6" style="height: calc(100vh - 5.5rem)">
+    <nav class="flex flex-col space-y-6 items-center pt-8">
+      <a
+        href="{{ url_for('home.duval_triangle.training') }}"
+        class="w-60 focus:outline-none text-center text-white font-medium bg-neutral-800 hover:bg-neutral-900 focus:ring-4 focus:ring-neutral-700 rounded-lg px-6 py-4"
+      >
+        Konstruksi Model dan Training Dataset
+      </a>
+      <a
+        href="{{ url_for('home.duval_triangle.result') }}"
+        class="w-60 focus:outline-none text-center text-white font-medium bg-neutral-800 hover:bg-neutral-900 focus:ring-4 focus:ring-neutral-700 rounded-lg px-6 py-4"
+      >
+        Tingkat Akurasi Model
+      </a>
+      <a
+        href="{{ url_for('home.duval_triangle.classification') }}"
+        class="w-60 focus:outline-none text-center text-white font-medium bg-neutral-800 hover:bg-neutral-900 focus:ring-4 focus:ring-neutral-700 rounded-lg px-6 py-4"
+      >
+        Klasifikasi Kerusakan Transformator Daya
+      </a>
+      <a
+        href="{{ url_for('home.duval_triangle.history') }}"
+        class="w-60 focus:outline-none text-center text-white font-medium bg-neutral-800 hover:bg-neutral-900 focus:ring-4 focus:ring-neutral-700 rounded-lg px-6 py-4"
+      >
+        History Klasifikasi
+      </a>
+    </nav>
+  </div>
+  <div class="w-full flex flex-col items-center">
+    <div class="py-8 flex w-full">
+      <h5 class="text-2xl font-semibold text-neutral-900 text-center w-full">
+        History Klasifikasi
+      </h5>
+    </div>
+    <div
+      class="overflow-auto relative sm:rounded-lg w-full"
+      style="height: calc(100vh - 11.5rem)"
+    >
+      <table class="w-full text-left text-neutral-500">
+        <thead
+          class="text-base text-neutral-900 uppercase bg-neutral-50 sticky top-0"
+        >
+          <tr>
+            <th scope="col" class="py-3 px-6">No</th>
+            <th scope="col" class="py-3 px-6">%CH4</th>
+            <th scope="col" class="py-3 px-6">%C2H4</th>
+            <th scope="col" class="py-3 px-6">%C2H2</th>
+            <th scope="col" class="py-3 px-6">CX</th>
+            <th scope="col" class="py-3 px-6">CY</th>
+            <th scope="col" class="py-3 px-6">Kelas Kerusakan</th>
+            <th scope="col" class="py-3 px-6">Detail Kerusakan</th>
+            <th scope="col" class="py-3 px-6">Action</th>
+          </tr>
+        </thead>
+        <tbody class="text-sm overflow-y-auto text-neutral-700">
+          {% for index, history in histories %}
+          <tr class="bg-white border-b hover:bg-neutral-50 h-[56px]">
+            <th
+              scope="row"
+              class="py-4 px-6 font-medium text-neutral-900 whitespace-nowrap"
+            >
+              {{ index + 1 }}
+            </th>
+            <td class="py-4 px-6">{{ history['ch4']|round(2) }}</td>
+            <td class="py-4 px-6">{{ history['c2h4']|round(2) }}</td>
+            <td class="py-4 px-6">{{ history['c2h2']|round(2) }}</td>
+            <td class="py-4 px-6">{{ history['cx']|round(2) }}</td>
+            <td class="py-4 px-6">{{ history['cy']|round(2) }}</td>
+            <td class="py-4 px-6">{{ history['faultClass'] }}</td>
+            <td class="py-4 px-6">{{ history['faultClassDefinition'] }}</td>
+            <td class="py-4 px-6">
+              <form action="{{ url_for('home.duval_triangle.delete_history') }}" method="POST">
+                <input name="id" value="{{ history['id'] }}" hidden>
+                <button class="focus:outline-none text-center text-red-500 shadow-sm border border-neutral-100 font-medium bg-white hover:bg-neutral-100 focus:ring-4 focus:ring-neutral-100 rounded-lg px-4 py-3" type="submit">Delete</button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>
+{% endblock %}

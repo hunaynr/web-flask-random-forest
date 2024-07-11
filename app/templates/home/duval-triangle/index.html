@@ -1,0 +1,41 @@
+{% extends "layout/dashboard.base.html" %} {% block subheading %}
+<h6 class="text-base text-neutral-900">Dashboard Duval Triangle</h6>
+{% endblock %} {% block main %}
+<main class="w-full flex flex-row">
+  <div class="bg-neutral-50 px-6" style="height: calc(100vh - 5.5rem)">
+    <nav class="flex flex-col space-y-6 items-center pt-8">
+      <a
+        href="{{ url_for('home.duval_triangle.training') }}"
+        class="w-60 focus:outline-none text-center text-white font-medium bg-neutral-800 hover:bg-neutral-900 focus:ring-4 focus:ring-neutral-700 rounded-lg px-6 py-4"
+      >
+        Konstruksi Model dan Training Dataset
+      </a>
+      <a
+        href="{{ url_for('home.duval_triangle.result') }}"
+        class="w-60 focus:outline-none text-center text-white font-medium bg-neutral-800 hover:bg-neutral-900 focus:ring-4 focus:ring-neutral-700 rounded-lg px-6 py-4"
+      >
+        Tingkat Akurasi Model
+      </a>
+      <a
+        href="{{ url_for('home.duval_triangle.classification') }}"
+        class="w-60 focus:outline-none text-center text-white font-medium bg-neutral-800 hover:bg-neutral-900 focus:ring-4 focus:ring-neutral-700 rounded-lg px-6 py-4"
+      >
+        Klasifikasi Kerusakan Transformator Daya
+      </a>
+      <a
+        href="{{ url_for('home.duval_triangle.history') }}"
+        class="w-60 focus:outline-none text-center text-white font-medium bg-neutral-800 hover:bg-neutral-900 focus:ring-4 focus:ring-neutral-700 rounded-lg px-6 py-4"
+      >
+        History Klasifikasi
+      </a>
+    </nav>
+  </div>
+  <div class="w-full flex flex-col items-center justify-center">
+    <h4 class="font-semibold text-2xl">Welcome {{ current_user.name }}!</h4>
+    <p class="py-4 w-[540px] text-center">
+      Anda sedang menggunakan Sistem Klasifikasi Transformator Daya dengan
+      Teknik Interpretasi Duval Triangle
+    </p>
+  </div>
+</main>
+{% endblock %}

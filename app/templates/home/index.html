@@ -1,0 +1,33 @@
+{% include "layout/home.base.html" %} {% block main %}
+<main class="flex flex-col justify-center items-center">
+  <section>
+    <h3
+      class="text-2xl text-center max-w-5xl text-neutral-900 font-semibold pt-16"
+    >
+      Metode Random Forest untuk Klasifikasi Kerusakan Transformator Daya
+      berdasarkan Gas Terlarut pada Duval Triangle dan Duval Pentagon
+    </h3>
+  </section>
+  <div class="h-32"></div>
+  <section class="w-full max-w-3xl flex flex-row justify-around">
+    <div class="flex flex-col space-y-4 items-center">
+      <h4 class="font-medium">CH4, C2H4, C2H2</h4>
+      <a
+        href="{{ url_for('home.duval_triangle.index') }}"
+        class="focus:outline-none text-xl text-center text-white font-semibold bg-neutral-800 hover:bg-neutral-900 focus:ring-4 focus:ring-neutral-700 font-medium rounded-lg text-sm px-10 py-6"
+      >
+        Duval Triangle
+      </a>
+    </div>
+    <div class="flex flex-col space-y-4 items-center">
+      <h4 class="font-medium">H2, C2H6, CH4, C2H4, C2H2</h4>
+      <a
+        href="{{ url_for('home.duval_pentagon.index') }}"
+        class="focus:outline-none text-xl text-center text-white font-semibold bg-neutral-800 hover:bg-neutral-900 focus:ring-4 focus:ring-neutral-700 font-medium rounded-lg text-sm px-10 py-6"
+      >
+        Duval Pentagon
+      </a>
+    </div>
+  </section>
+</main>
+{% endblock %}

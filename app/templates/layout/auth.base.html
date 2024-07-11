@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/flowbite@1.4.7/dist/flowbite.min.css"
+    />
+    <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <title>{% block title %} {% endblock %}</title>
+  </head>
+  <body style="font-family: Inter, sans-serif">
+    <header
+      class="w-full flex flex-row justify-between px-6 py-4 bg-neutral-50"
+    >
+      <a href="{{ url_for('base.index') }}"
+        ><h1
+          class="text-2xl text-center max-w-5xl text-neutral-900 font-semibold"
+        >
+          Transformator Fault Classifier
+        </h1></a
+      >
+      <nav>
+        <a
+          href="{{ url_for('auth.login') }}"
+          class="text-neutral-900 bg-white border border-neutral-300 focus:outline-none hover:bg-neutral-100 focus:ring-4 focus:ring-neutral-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2"
+          >Login</a
+        >
+        <a
+          href="{{ url_for('auth.register') }}"
+          class="text-white bg-neutral-800 hover:bg-neutral-900 focus:outline-none focus:ring-4 focus:ring-neutral-700 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2"
+          >Register</a
+        >
+      </nav>
+    </header>
+    {% block main %} {% endblock %} {% block footer %} {% endblock %}
+  </body>
+</html>

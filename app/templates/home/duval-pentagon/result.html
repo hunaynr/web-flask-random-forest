@@ -1,0 +1,61 @@
+{% extends "layout/dashboard.base.html" %} {% block subheading %}
+<h6 class="text-base text-neutral-900">Duval Pentagon</h6>
+{% endblock %} {% block main %}
+<main class="w-full flex flex-row">
+  <div class="bg-neutral-50 px-6" style="height: calc(100vh - 5.5rem)">
+    <nav class="flex flex-col space-y-6 items-center pt-8">
+      <a
+        href="{{ url_for('home.duval_pentagon.training') }}"
+        class="w-60 focus:outline-none text-center text-white font-medium bg-neutral-800 hover:bg-neutral-900 focus:ring-4 focus:ring-neutral-700 rounded-lg px-6 py-4"
+      >
+        Konstruksi Model dan Training Dataset
+      </a>
+      <a
+        href="{{ url_for('home.duval_pentagon.result') }}"
+        class="w-60 focus:outline-none text-center text-white font-medium bg-neutral-800 hover:bg-neutral-900 focus:ring-4 focus:ring-neutral-700 rounded-lg px-6 py-4"
+      >
+        Tingkat Akurasi Model
+      </a>
+      <a
+        href="{{ url_for('home.duval_pentagon.classification') }}"
+        class="w-60 focus:outline-none text-center text-white font-medium bg-neutral-800 hover:bg-neutral-900 focus:ring-4 focus:ring-neutral-700 rounded-lg px-6 py-4"
+      >
+        Klasifikasi Kerusakan Transformator Daya
+      </a>
+      <a
+        href="{{ url_for('home.duval_pentagon.history') }}"
+        class="w-60 focus:outline-none text-center text-white font-medium bg-neutral-800 hover:bg-neutral-900 focus:ring-4 focus:ring-neutral-700 rounded-lg px-6 py-4"
+      >
+        History Klasifikasi
+      </a>
+    </nav>
+  </div>
+  <div class="w-full flex flex-col items-center">
+    <div class="py-8 flex w-full">
+      <h5 class="text-2xl font-semibold text-neutral-900 text-center w-full">
+        Tingkat Akurasi Model
+      </h5>
+    </div>
+    {% if data['photo'] %}
+    <div class="my-8 flex flex-col items-center">
+      <img
+        class="w-[480px]"
+        src="{{ url_for('static', filename=data['photo']) }}"
+      />
+      <h4 class="mt-8 text-xl font-medium">
+        Accuracy: {{ data['accuracy']|round(5) }} ({{ (data['accuracy'] *
+        100)|round(3) }}%)
+      </h4>
+    </div>
+    {% else %}
+    <h5 class="mt-8 text-lg">
+      Belum ada model yang ditraining, silahkan lakukan
+      <a href="{{ url_for('home.duval_pentagon.training') }}" class="underline"
+        >training</a
+      >
+      terlebih dahulu.
+    </h5>
+    {% endif %}
+  </div>
+</main>
+{% endblock %}

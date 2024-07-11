@@ -1,0 +1,89 @@
+{% extends "layout/dashboard.base.html" %} {% block subheading %}
+<h6 class="text-base text-neutral-900">Duval Triangle</h6>
+{% endblock %} {% block main %}
+<main class="w-full flex flex-row">
+  <div class="bg-neutral-50 px-6" style="height: calc(100vh - 5.5rem)">
+    <nav class="flex flex-col space-y-6 items-center pt-8">
+      <a
+        href="{{ url_for('home.duval_triangle.training') }}"
+        class="w-60 focus:outline-none text-center text-white font-medium bg-neutral-800 hover:bg-neutral-900 focus:ring-4 focus:ring-neutral-700 rounded-lg px-6 py-4"
+      >
+        Konstruksi Model dan Training Dataset
+      </a>
+      <a
+        href="{{ url_for('home.duval_triangle.result') }}"
+        class="w-60 focus:outline-none text-center text-white font-medium bg-neutral-800 hover:bg-neutral-900 focus:ring-4 focus:ring-neutral-700 rounded-lg px-6 py-4"
+      >
+        Tingkat Akurasi Model
+      </a>
+      <a
+        href="{{ url_for('home.duval_triangle.classification') }}"
+        class="w-60 focus:outline-none text-center text-white font-medium bg-neutral-800 hover:bg-neutral-900 focus:ring-4 focus:ring-neutral-700 rounded-lg px-6 py-4"
+      >
+        Klasifikasi Kerusakan Transformator Daya
+      </a>
+      <a
+        href="{{ url_for('home.duval_triangle.history') }}"
+        class="w-60 focus:outline-none text-center text-white font-medium bg-neutral-800 hover:bg-neutral-900 focus:ring-4 focus:ring-neutral-700 rounded-lg px-6 py-4"
+      >
+        History Klasifikasi
+      </a>
+    </nav>
+  </div>
+  <div class="w-full flex flex-col items-center">
+    <div class="py-8 px-12 flex w-full">
+      <a
+        href="{{ url_for('home.duval_triangle.classification') }}"
+        class="text-white bg-neutral-800 hover:bg-neutral-900 focus:outline-none focus:ring-4 focus:ring-neutral-700 font-medium rounded-lg text-sm px-5 py-2.5"
+        >Back</a
+      >
+    </div>
+    <div class="w-full flex flex-row items-center px-12 my-8 space-x-4">
+      <div class="w-1/3 max-w-[384px] h-[420px] p-6 rounded-xl border border-neutral-300">
+        <h6 class="text-xl font-semibold text-neutral-900 text-center">Persentase Relatif</h6>
+        <div class="text-md py-8 font-medium flex flex-col items-center">
+          <div class="w-full flex flex-row py-4 justify-center">
+            <p class="w-2/5 pl-8">CH4</p>
+            <p class="w-2">:</p>
+            <p class="w-2/5 pl-8">{{ data['p1']|round(2) }}%</p>
+          </div>
+          <div class="w-full flex flex-row py-4 justify-center">
+            <p class="w-2/5 pl-8">C2H4</p>
+            <p class="w-2">:</p>
+            <p class="w-2/5 pl-8">{{ data['p2']|round(2) }}%</p>
+          </div>
+          <div class="w-full flex flex-row py-4 justify-center">
+            <p class="w-2/5 pl-8">C2H2</p>
+            <p class="w-2">:</p>
+            <p class="w-2/5 pl-8">{{ data['p3']|round(2) }}%</p>
+          </div>
+        </div>
+      </div>
+      <div class="w-1/3 max-w-[384px] h-[420px] p-6 rounded-xl border border-neutral-300">
+        <h6 class="text-xl font-semibold text-neutral-900 text-center">Titik Koordinat</h6>
+        <div class="text-md py-8 font-medium flex flex-col items-center">
+          <div class="w-full flex flex-row py-4 justify-center">
+            <p class="w-2/5 pl-12">CX</p>
+            <p class="w-2">:</p>
+            <p class="w-2/5 pl-8">{{ data['cx']|round(2) }}</p>
+          </div>
+          <div class="w-full flex flex-row py-4 justify-center">
+            <p class="w-2/5 pl-12">CY</p>
+            <p class="w-2">:</p>
+            <p class="w-2/5 pl-8">{{ data['cy']|round(2) }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="w-1/3 max-w-[384px] h-[420px] p-6 rounded-xl border border-neutral-300">
+        <h6 class="text-xl font-semibold text-neutral-900 text-center">Hasil Klasifikasi</h6>
+        <div class="flex flex-col items-center text-neutral-900 py-8">
+          <div class="border border-neutral-500 rounded-lg w-32 h-32 flex justify-center items-center">
+            <p class="text-5xl">{{ data['class']['code'] }}</p>
+          </div>
+        </div>
+        <p class="text-lg font-medium text-center">{{ data['class']['definition'] }}</p>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}
