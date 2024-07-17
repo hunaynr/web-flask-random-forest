@@ -8,7 +8,11 @@
 
 <p align="justify">Uraian berbagai tindakan yang dapat difasilitasi oleh sistem tercermin dalam bentuk diagram berikut. Terdapat satu tipe user yang bertindak sebagai admin untuk melakukan proses klasifikasi dan seluruh elemen yang mendukung mekanisme sistem</p>
 
+<div align="center">
+
 ![img_1](img/img_1.png)<br><br>
+
+</div>
 
 <p align="justify">Data yang dihasilkan untuk setiap kegiatan klasifikasi oleh sistem tersimpan dalam tabel yang saling terhubung dalam bagan dibawah ini</p>
 
